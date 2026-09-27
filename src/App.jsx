@@ -124,13 +124,12 @@ export default function App() {
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
-  // Real Email Submission with Web3Forms + Fallback
+  // Real Email Submission with Web3Forms Key for elevorecorporation@gmail.com
   const handleFormSubmit = async (e) => {
     e.preventDefault()
     setFormLoading(true)
 
     try {
-      // Send HTTP POST request to Web3Forms API
       const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: {
@@ -138,7 +137,7 @@ export default function App() {
           'Accept': 'application/json'
         },
         body: JSON.stringify({
-          access_key: '687b3a03-e49d-4eb1-89f6-79c230d59523', // Web3Forms Key for elevorecorporation@gmail.com
+          access_key: '687b3a03-e49d-4eb1-89f6-79c230d59523', // Active Web3Forms Key
           name: formData.name,
           phone: formData.phone,
           email: formData.email,
@@ -154,7 +153,7 @@ export default function App() {
       setFormLoading(false)
       setFormSubmitted(true)
     } catch (err) {
-      console.log('Form submission completed locally:', err)
+      console.log('Form submission fallback:', err)
       setFormLoading(false)
       setFormSubmitted(true)
     }
@@ -282,22 +281,22 @@ export default function App() {
     <div className="min-h-screen flex flex-col font-sans selection:bg-amber-200 selection:text-emerald-950">
 
       {/* TOP ANNOUNCEMENT BAR */}
-      <div style={{ background: 'linear-gradient(90deg, #072B22 0%, #0B3B2F 50%, #072B22 100%)' }} className="text-amber-200 py-2.5 px-4 text-xs sm:text-sm font-medium border-b border-amber-500/20">
+      <div style={{ background: 'linear-gradient(90deg, #041B15 0%, #0A362B 50%, #041B15 100%)' }} className="text-amber-300 py-2.5 px-4 text-xs sm:text-sm font-medium border-b border-amber-400/30">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2 text-center sm:text-left">
           <div className="flex items-center gap-2">
-            <span className="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-            <span className="font-semibold text-white">Serving Greater Orlando & Winter Park</span>
+            <span className="inline-block w-2.5 h-2.5 rounded-full bg-amber-400 animate-ping"></span>
+            <span className="font-bold text-white tracking-wide">Serving Greater Orlando & Winter Park</span>
             <span className="text-amber-400/60 hidden md:inline">•</span>
-            <span className="hidden md:inline text-amber-100/80">Licensed & Insured Single-Source Vendor</span>
+            <span className="hidden md:inline text-amber-200/90 font-light">Licensed & Insured Single-Source Property Vendor</span>
           </div>
           <div className="flex items-center gap-4 text-xs">
             <a href="tel:4079524228" className="flex items-center gap-1.5 text-amber-300 hover:text-white transition-colors">
-              <Phone className="w-3.5 h-3.5" />
-              <span className="font-bold tracking-wider">(407) 952-4228</span>
+              <Phone className="w-3.5 h-3.5 text-amber-400" />
+              <span className="font-extrabold tracking-wider">(407) 952-4228</span>
             </a>
             <span className="text-amber-500/40">|</span>
-            <a href="https://wa.me/14079524228?text=Hello%20ELEVORE%20Corporation,%20I%20would%20like%20to%20request%20a%20quote" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-emerald-400 hover:text-amber-300 transition-colors font-bold">
-              <MessageSquare className="w-3.5 h-3.5 text-emerald-400" />
+            <a href="https://wa.me/14079524228?text=Hello%20ELEVORE%20Corporation,%20I%20would%20like%20to%20request%20a%20quote" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-amber-200 hover:text-amber-300 transition-colors font-bold">
+              <MessageSquare className="w-3.5 h-3.5 text-amber-400" />
               <span>WhatsApp Us</span>
             </a>
           </div>
@@ -305,19 +304,19 @@ export default function App() {
       </div>
 
       {/* NAVIGATION HEADER */}
-      <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-emerald-900/10 shadow-sm transition-all">
+      <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-amber-400/20 shadow-sm transition-all">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
           
           {/* LOGO */}
           <a href="#" className="flex items-center gap-3 group">
-            <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-emerald-800 to-emerald-950 flex items-center justify-center shadow-lg border border-amber-400/40 group-hover:border-amber-400 transition-all duration-300">
+            <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-emerald-850 to-emerald-950 flex items-center justify-center shadow-lg border border-amber-400/50 group-hover:border-amber-400 transition-all duration-300">
               <Sparkles className="w-6 h-6 text-amber-400 transform group-hover:rotate-12 transition-transform duration-300" />
             </div>
             <div className="flex flex-col">
               <span style={{ fontFamily: 'var(--font-heading)' }} className="text-2xl font-black tracking-wider text-emerald-950 leading-none">
                 ELEVORE
               </span>
-              <span className="text-[10px] font-bold tracking-[0.25em] text-amber-600 uppercase mt-0.5">
+              <span className="text-[10px] font-extrabold tracking-[0.25em] text-amber-600 uppercase mt-0.5">
                 Corporation
               </span>
             </div>
@@ -325,22 +324,22 @@ export default function App() {
 
           {/* DESKTOP NAV LINKS */}
           <nav className="hidden md:flex items-center gap-8 text-sm font-semibold tracking-wide text-slate-700">
-            <a href="#home" className="hover:text-emerald-800 transition-colors py-1 border-b-2 border-transparent hover:border-amber-500">
+            <a href="#home" className="hover:text-emerald-900 transition-colors py-1 border-b-2 border-transparent hover:border-amber-500">
               Home
             </a>
-            <a href="#services" className="hover:text-emerald-800 transition-colors py-1 border-b-2 border-transparent hover:border-amber-500">
+            <a href="#services" className="hover:text-emerald-900 transition-colors py-1 border-b-2 border-transparent hover:border-amber-500">
               Services
             </a>
-            <a href="#transformations" className="hover:text-emerald-800 transition-colors py-1 border-b-2 border-transparent hover:border-amber-500">
+            <a href="#transformations" className="hover:text-emerald-900 transition-colors py-1 border-b-2 border-transparent hover:border-amber-500">
               Before & After
             </a>
-            <a href="#commercial" className="hover:text-emerald-800 transition-colors py-1 border-b-2 border-transparent hover:border-amber-500">
+            <a href="#commercial" className="hover:text-emerald-900 transition-colors py-1 border-b-2 border-transparent hover:border-amber-500">
               Commercial & HOAs
             </a>
-            <a href="#faq" className="hover:text-emerald-800 transition-colors py-1 border-b-2 border-transparent hover:border-amber-500">
+            <a href="#faq" className="hover:text-emerald-900 transition-colors py-1 border-b-2 border-transparent hover:border-amber-500">
               FAQ
             </a>
-            <a href="#contact" className="hover:text-emerald-800 transition-colors py-1 border-b-2 border-transparent hover:border-amber-500">
+            <a href="#contact" className="hover:text-emerald-900 transition-colors py-1 border-b-2 border-transparent hover:border-amber-500">
               Contact
             </a>
           </nav>
@@ -375,24 +374,24 @@ export default function App() {
 
         {/* MOBILE DRAWER */}
         {mobileMenuOpen && (
-          <div className="md:hidden bg-white border-b border-emerald-900/10 px-6 py-6 shadow-2xl animate-fadeIn">
+          <div className="md:hidden bg-white border-b border-amber-400/20 px-6 py-6 shadow-2xl animate-fadeIn">
             <div className="flex flex-col gap-4 text-base font-bold text-slate-800">
-              <a href="#home" onClick={() => setMobileMenuOpen(false)} className="py-2 border-b border-slate-100 hover:text-emerald-800">
+              <a href="#home" onClick={() => setMobileMenuOpen(false)} className="py-2 border-b border-slate-100 hover:text-emerald-900">
                 Home
               </a>
-              <a href="#services" onClick={() => setMobileMenuOpen(false)} className="py-2 border-b border-slate-100 hover:text-emerald-800">
+              <a href="#services" onClick={() => setMobileMenuOpen(false)} className="py-2 border-b border-slate-100 hover:text-emerald-900">
                 Services
               </a>
-              <a href="#transformations" onClick={() => setMobileMenuOpen(false)} className="py-2 border-b border-slate-100 hover:text-emerald-800">
+              <a href="#transformations" onClick={() => setMobileMenuOpen(false)} className="py-2 border-b border-slate-100 hover:text-emerald-900">
                 Before & After
               </a>
-              <a href="#commercial" onClick={() => setMobileMenuOpen(false)} className="py-2 border-b border-slate-100 hover:text-emerald-800">
+              <a href="#commercial" onClick={() => setMobileMenuOpen(false)} className="py-2 border-b border-slate-100 hover:text-emerald-900">
                 Commercial & HOAs
               </a>
-              <a href="#faq" onClick={() => setMobileMenuOpen(false)} className="py-2 border-b border-slate-100 hover:text-emerald-800">
+              <a href="#faq" onClick={() => setMobileMenuOpen(false)} className="py-2 border-b border-slate-100 hover:text-emerald-900">
                 FAQ
               </a>
-              <a href="#contact" onClick={() => setMobileMenuOpen(false)} className="py-2 border-b border-slate-100 hover:text-emerald-800">
+              <a href="#contact" onClick={() => setMobileMenuOpen(false)} className="py-2 border-b border-slate-100 hover:text-emerald-900">
                 Contact
               </a>
 
@@ -427,10 +426,10 @@ export default function App() {
           <img
             src="/images/hero.jpg"
             alt="Luxury Greater Orlando Estate Property"
-            className="w-full h-full object-cover opacity-25 scale-105 transform transition-transform duration-1000"
+            className="w-full h-full object-cover opacity-30 scale-105 transform transition-transform duration-1000"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-emerald-950 via-emerald-950/90 to-emerald-900/75"></div>
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(212,175,55,0.15),transparent_70%)]"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-emerald-950 via-emerald-950/90 to-emerald-900/80"></div>
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_40%_30%,rgba(212,175,55,0.18),transparent_70%)]"></div>
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
@@ -440,7 +439,7 @@ export default function App() {
             <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
               
               {/* Location Badge */}
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-900/80 border border-amber-400/40 text-amber-300 text-xs sm:text-sm font-semibold tracking-wide shadow-lg">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-900/90 border border-amber-400/50 text-amber-300 text-xs sm:text-sm font-semibold tracking-wide shadow-xl backdrop-blur-md">
                 <MapPin className="w-4 h-4 text-amber-400" />
                 <span>Greater Orlando • Winter Park • Central Florida</span>
               </div>
@@ -481,7 +480,7 @@ export default function App() {
               {/* Trust Indicators */}
               <div className="pt-8 border-t border-emerald-800/80 grid grid-cols-2 sm:grid-cols-3 gap-4 text-left">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-emerald-900/80 border border-amber-400/30 flex items-center justify-center shrink-0">
+                  <div className="w-10 h-10 rounded-lg bg-emerald-900/90 border border-amber-400/40 flex items-center justify-center shrink-0">
                     <ShieldCheck className="w-5 h-5 text-amber-400" />
                   </div>
                   <div>
@@ -491,7 +490,7 @@ export default function App() {
                 </div>
 
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-emerald-900/80 border border-amber-400/30 flex items-center justify-center shrink-0">
+                  <div className="w-10 h-10 rounded-lg bg-emerald-900/90 border border-amber-400/40 flex items-center justify-center shrink-0">
                     <Clock className="w-5 h-5 text-amber-400" />
                   </div>
                   <div>
@@ -501,7 +500,7 @@ export default function App() {
                 </div>
 
                 <div className="flex items-center gap-3 col-span-2 sm:col-span-1">
-                  <div className="w-10 h-10 rounded-lg bg-emerald-900/80 border border-amber-400/30 flex items-center justify-center shrink-0">
+                  <div className="w-10 h-10 rounded-lg bg-emerald-900/90 border border-amber-400/40 flex items-center justify-center shrink-0">
                     <Award className="w-5 h-5 text-amber-400" />
                   </div>
                   <div>
@@ -515,7 +514,7 @@ export default function App() {
 
             {/* HERO INTERACTIVE FEATURE CARD */}
             <div className="lg:col-span-5">
-              <div className="glass-card-dark p-6 sm:p-8 relative overflow-hidden">
+              <div className="glass-card-dark p-6 sm:p-8 relative overflow-hidden border-2 border-amber-400/40">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-amber-400/10 rounded-full blur-3xl pointer-events-none"></div>
 
                 <div className="flex items-center justify-between border-b border-amber-400/20 pb-4 mb-6">
@@ -529,7 +528,7 @@ export default function App() {
                 </div>
 
                 <div className="space-y-4 mb-6">
-                  <div className="flex items-start gap-3 p-3 rounded-lg bg-emerald-950/60 border border-emerald-800/60">
+                  <div className="flex items-start gap-3 p-3 rounded-lg bg-emerald-950/70 border border-emerald-800/80">
                     <CheckCircle2 className="w-5 h-5 text-amber-400 shrink-0 mt-0.5" />
                     <div>
                       <h4 className="text-sm font-bold text-white">Seamless Tenant Transitions</h4>
@@ -537,7 +536,7 @@ export default function App() {
                     </div>
                   </div>
 
-                  <div className="flex items-start gap-3 p-3 rounded-lg bg-emerald-950/60 border border-emerald-800/60">
+                  <div className="flex items-start gap-3 p-3 rounded-lg bg-emerald-950/70 border border-emerald-800/80">
                     <CheckCircle2 className="w-5 h-5 text-amber-400 shrink-0 mt-0.5" />
                     <div>
                       <h4 className="text-sm font-bold text-white">Full Handyman Capabilities</h4>
@@ -545,7 +544,7 @@ export default function App() {
                     </div>
                   </div>
 
-                  <div className="flex items-start gap-3 p-3 rounded-lg bg-emerald-950/60 border border-emerald-800/60">
+                  <div className="flex items-start gap-3 p-3 rounded-lg bg-emerald-950/70 border border-emerald-800/80">
                     <CheckCircle2 className="w-5 h-5 text-amber-400 shrink-0 mt-0.5" />
                     <div>
                       <h4 className="text-sm font-bold text-white">Post-Construction Detailing</h4>
@@ -564,7 +563,7 @@ export default function App() {
                 </button>
 
                 <div className="mt-4 text-center">
-                  <p className="text-[11px] text-slate-400 flex items-center justify-center gap-1">
+                  <p className="text-[11px] text-slate-300 flex items-center justify-center gap-1">
                     <span>Direct Hotline:</span>
                     <a href="tel:4079524228" className="text-amber-400 font-bold hover:underline">(407) 952-4228</a>
                   </p>
@@ -577,7 +576,7 @@ export default function App() {
       </section>
 
       {/* CORE SERVICES GRID SECTION (3 COLUMNS) */}
-      <section id="services" className="py-20 lg:py-28 bg-gradient-to-b from-amber-50/50 via-white to-amber-50/30 relative">
+      <section id="services" className="py-20 lg:py-28 bg-gradient-to-b from-[#FAF8F5] via-white to-[#F4F0E8] relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="text-center max-w-3xl mx-auto mb-16">
@@ -597,14 +596,14 @@ export default function App() {
           <div className="grid md:grid-cols-3 gap-8">
             
             {/* CARD 1: Turnover & Deep Cleaning */}
-            <div className="glass-card group flex flex-col overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
+            <div className="glass-card group flex flex-col overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl border border-amber-400/30">
               <div className="relative h-60 overflow-hidden">
                 <img
                   src="/images/turnover.jpg"
                   alt="Turnover and Deep Cleaning"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-emerald-950/80 via-transparent to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-emerald-950/85 via-transparent to-transparent"></div>
                 <div className="absolute top-4 left-4 bg-emerald-950/90 text-amber-300 p-2.5 rounded-xl border border-amber-400/40 shadow-lg">
                   <SprayCan className="w-6 h-6" />
                 </div>
@@ -648,7 +647,7 @@ export default function App() {
                     })
                     document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })
                   }}
-                  className="w-full btn btn-outline-emerald text-xs py-3 flex items-center justify-center gap-2 group-hover:bg-emerald-800 group-hover:text-white transition-all"
+                  className="w-full btn btn-outline-emerald text-xs py-3 flex items-center justify-center gap-2 group-hover:bg-emerald-900 group-hover:text-white transition-all"
                 >
                   <span>Request Turnover Service</span>
                   <ArrowRight className="w-4 h-4" />
@@ -657,14 +656,14 @@ export default function App() {
             </div>
 
             {/* CARD 2: Handyman & Property Maintenance */}
-            <div className="glass-card group flex flex-col overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
+            <div className="glass-card group flex flex-col overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl border border-amber-400/30">
               <div className="relative h-60 overflow-hidden">
                 <img
                   src="/images/handyman.jpg"
                   alt="Handyman and Property Maintenance"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-emerald-950/80 via-transparent to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-emerald-950/85 via-transparent to-transparent"></div>
                 <div className="absolute top-4 left-4 bg-emerald-950/90 text-amber-300 p-2.5 rounded-xl border border-amber-400/40 shadow-lg">
                   <Wrench className="w-6 h-6" />
                 </div>
@@ -708,7 +707,7 @@ export default function App() {
                     })
                     document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })
                   }}
-                  className="w-full btn btn-outline-emerald text-xs py-3 flex items-center justify-center gap-2 group-hover:bg-emerald-800 group-hover:text-white transition-all"
+                  className="w-full btn btn-outline-emerald text-xs py-3 flex items-center justify-center gap-2 group-hover:bg-emerald-900 group-hover:text-white transition-all"
                 >
                   <span>Book Handyman Service</span>
                   <ArrowRight className="w-4 h-4" />
@@ -717,14 +716,14 @@ export default function App() {
             </div>
 
             {/* CARD 3: Post-Construction Cleaning */}
-            <div className="glass-card group flex flex-col overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
+            <div className="glass-card group flex flex-col overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl border border-amber-400/30">
               <div className="relative h-60 overflow-hidden">
                 <img
                   src="/images/post_construction.jpg"
                   alt="Post-Construction Cleaning"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-emerald-950/80 via-transparent to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-emerald-950/85 via-transparent to-transparent"></div>
                 <div className="absolute top-4 left-4 bg-emerald-950/90 text-amber-300 p-2.5 rounded-xl border border-amber-400/40 shadow-lg">
                   <Building2 className="w-6 h-6" />
                 </div>
@@ -768,7 +767,7 @@ export default function App() {
                     })
                     document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })
                   }}
-                  className="w-full btn btn-outline-emerald text-xs py-3 flex items-center justify-center gap-2 group-hover:bg-emerald-800 group-hover:text-white transition-all"
+                  className="w-full btn btn-outline-emerald text-xs py-3 flex items-center justify-center gap-2 group-hover:bg-emerald-900 group-hover:text-white transition-all"
                 >
                   <span>Schedule Construction Clean</span>
                   <ArrowRight className="w-4 h-4" />
@@ -801,7 +800,7 @@ export default function App() {
           {/* SLIDER WRAPPER */}
           <div className="max-w-4xl mx-auto">
             <div
-              className="relative h-[320px] sm:h-[480px] rounded-2xl overflow-hidden shadow-2xl border-2 border-amber-400/40 select-none cursor-ew-resize"
+              className="relative h-[320px] sm:h-[480px] rounded-2xl overflow-hidden shadow-2xl border-2 border-amber-400/50 select-none cursor-ew-resize"
               onMouseMove={handleMouseMove}
               onTouchMove={handleTouchMove}
               onMouseDown={() => setIsDragging(true)}
@@ -814,7 +813,7 @@ export default function App() {
                 alt="Property Before Detailing"
                 className="absolute inset-0 w-full h-full object-cover pointer-events-none"
               />
-              <div className="absolute top-4 left-4 bg-black/70 text-red-300 text-xs font-bold px-3 py-1.5 rounded-lg border border-red-500/40 backdrop-blur-md uppercase tracking-wider">
+              <div className="absolute top-4 left-4 bg-black/80 text-red-300 text-xs font-bold px-3 py-1.5 rounded-lg border border-red-500/40 backdrop-blur-md uppercase tracking-wider">
                 Before: Move-Out Condition
               </div>
 
@@ -836,10 +835,10 @@ export default function App() {
 
               {/* SLIDER HANDLE LINE */}
               <div
-                className="absolute top-0 bottom-0 w-1 bg-amber-400 shadow-[0_0_15px_#D4AF37] pointer-events-none"
+                className="absolute top-0 bottom-0 w-1 bg-amber-400 shadow-[0_0_20px_#D4AF37] pointer-events-none"
                 style={{ left: `${sliderPosition}%` }}
               >
-                <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-amber-400 text-emerald-950 shadow-2xl flex items-center justify-center border-2 border-white font-bold text-xs">
+                <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-11 h-11 rounded-full bg-amber-400 text-emerald-950 shadow-2xl flex items-center justify-center border-2 border-white font-extrabold text-xs">
                   ◄ ►
                 </div>
               </div>
@@ -855,7 +854,7 @@ export default function App() {
       </section>
 
       {/* COMMERCIAL & PROPERTY MANAGERS HIGHLIGHT SECTION */}
-      <section id="commercial" className="py-20 lg:py-28 bg-white relative">
+      <section id="commercial" className="py-20 lg:py-28 bg-[#FAF8F5] relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-12 gap-12 items-center">
             
@@ -876,7 +875,7 @@ export default function App() {
               {/* Key Selling Points Bullet Cards */}
               <div className="grid sm:grid-cols-2 gap-4 pt-2">
                 
-                <div className="p-4 rounded-xl bg-amber-50/60 border border-amber-200 flex items-start gap-3">
+                <div className="p-4 rounded-xl bg-white border border-amber-400/30 flex items-start gap-3 shadow-sm">
                   <ShieldCheck className="w-6 h-6 text-emerald-800 shrink-0 mt-1" />
                   <div>
                     <h4 className="text-sm font-bold text-emerald-950">Fully Licensed & Insured</h4>
@@ -884,7 +883,7 @@ export default function App() {
                   </div>
                 </div>
 
-                <div className="p-4 rounded-xl bg-amber-50/60 border border-amber-200 flex items-start gap-3">
+                <div className="p-4 rounded-xl bg-white border border-amber-400/30 flex items-start gap-3 shadow-sm">
                   <Clock className="w-6 h-6 text-emerald-800 shrink-0 mt-1" />
                   <div>
                     <h4 className="text-sm font-bold text-emerald-950">Fast On-Call Support</h4>
@@ -892,7 +891,7 @@ export default function App() {
                   </div>
                 </div>
 
-                <div className="p-4 rounded-xl bg-amber-50/60 border border-amber-200 flex items-start gap-3">
+                <div className="p-4 rounded-xl bg-white border border-amber-400/30 flex items-start gap-3 shadow-sm">
                   <Layers className="w-6 h-6 text-emerald-800 shrink-0 mt-1" />
                   <div>
                     <h4 className="text-sm font-bold text-emerald-950">Single-Source Vendor</h4>
@@ -900,7 +899,7 @@ export default function App() {
                   </div>
                 </div>
 
-                <div className="p-4 rounded-xl bg-amber-50/60 border border-amber-200 flex items-start gap-3">
+                <div className="p-4 rounded-xl bg-white border border-amber-400/30 flex items-start gap-3 shadow-sm">
                   <Award className="w-6 h-6 text-emerald-800 shrink-0 mt-1" />
                   <div>
                     <h4 className="text-sm font-bold text-emerald-950">Consolidated Billing</h4>
@@ -924,7 +923,7 @@ export default function App() {
 
             {/* Vendor Partner Checklist Box */}
             <div className="lg:col-span-6">
-              <div className="bg-gradient-to-br from-emerald-900 to-emerald-950 p-8 rounded-2xl border-2 border-amber-400/40 shadow-2xl space-y-6 text-white">
+              <div className="bg-gradient-to-br from-emerald-900 to-emerald-950 p-8 rounded-2xl border-2 border-amber-400/50 shadow-2xl space-y-6 text-white">
                 <div className="border-b border-amber-400/20 pb-4">
                   <span className="text-xs font-bold text-amber-400 uppercase tracking-widest">Vendor Program</span>
                   <h3 style={{ fontFamily: 'var(--font-heading)' }} className="text-2xl font-bold text-white mt-1">
@@ -966,9 +965,9 @@ export default function App() {
       </section>
 
       {/* SERVICE AREA ZIP CODE CHECKER SECTION */}
-      <section className="py-16 bg-emerald-900 text-white relative">
+      <section className="py-16 bg-emerald-900 text-white relative border-y border-amber-400/30">
         <div className="max-w-4xl mx-auto px-4 text-center space-y-6">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-400/10 border border-amber-400/30 text-amber-300 text-xs font-bold tracking-wider uppercase">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-400/15 border border-amber-400/40 text-amber-300 text-xs font-bold tracking-wider uppercase">
             <Search className="w-3.5 h-3.5" />
             <span>Interactive Service Area Lookup</span>
           </div>
@@ -1001,7 +1000,7 @@ export default function App() {
       </section>
 
       {/* TESTIMONIALS CAROUSEL */}
-      <section className="py-20 bg-amber-50/50 border-y border-amber-200/60">
+      <section className="py-20 bg-amber-50/40 border-b border-amber-200/60">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <div className="section-badge">
@@ -1015,7 +1014,7 @@ export default function App() {
 
           <div className="grid md:grid-cols-3 gap-8">
             {reviews.map((rev, idx) => (
-              <div key={idx} className="glass-card p-6 sm:p-8 flex flex-col justify-between space-y-4">
+              <div key={idx} className="glass-card p-6 sm:p-8 flex flex-col justify-between space-y-4 border border-amber-400/30">
                 <div className="space-y-3">
                   <div className="flex gap-1 text-amber-500">
                     {[...Array(rev.rating)].map((_, i) => (
@@ -1090,7 +1089,7 @@ export default function App() {
       </section>
 
       {/* CONTACT & LEAD CAPTURE FORM SECTION */}
-      <section id="contact" className="py-20 lg:py-28 bg-gradient-to-b from-amber-50/70 to-white relative">
+      <section id="contact" className="py-20 lg:py-28 bg-gradient-to-b from-[#FAF8F5] to-white relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="text-center max-w-3xl mx-auto mb-16">
@@ -1110,7 +1109,7 @@ export default function App() {
             
             {/* DIRECT CONTACT INFO COLUMN */}
             <div className="lg:col-span-5 space-y-8">
-              <div className="glass-card-dark p-8 space-y-6">
+              <div className="glass-card-dark p-8 space-y-6 border-2 border-amber-400/40">
                 <div className="border-b border-amber-400/20 pb-4">
                   <h3 style={{ fontFamily: 'var(--font-heading)' }} className="text-2xl font-bold text-white">
                     Direct Contact Info
@@ -1121,7 +1120,7 @@ export default function App() {
                 <div className="space-y-6">
                   <a
                     href="tel:4079524228"
-                    className="flex items-start gap-4 p-4 rounded-xl bg-emerald-900/80 border border-amber-400/30 hover:border-amber-400 transition-colors group"
+                    className="flex items-start gap-4 p-4 rounded-xl bg-emerald-900/80 border border-amber-400/40 hover:border-amber-400 transition-colors group"
                   >
                     <div className="w-12 h-12 rounded-xl bg-amber-400 text-emerald-950 flex items-center justify-center shrink-0 shadow-lg group-hover:scale-105 transition-transform">
                       <Phone className="w-6 h-6" />
@@ -1151,7 +1150,7 @@ export default function App() {
 
                   <a
                     href="mailto:elevorecorporation@gmail.com"
-                    className="flex items-start gap-4 p-4 rounded-xl bg-emerald-900/80 border border-amber-400/30 hover:border-amber-400 transition-colors group"
+                    className="flex items-start gap-4 p-4 rounded-xl bg-emerald-900/80 border border-amber-400/40 hover:border-amber-400 transition-colors group"
                   >
                     <div className="w-12 h-12 rounded-xl bg-amber-400 text-emerald-950 flex items-center justify-center shrink-0 shadow-lg group-hover:scale-105 transition-transform">
                       <Mail className="w-6 h-6" />
@@ -1163,7 +1162,7 @@ export default function App() {
                     </div>
                   </a>
 
-                  <div className="flex items-start gap-4 p-4 rounded-xl bg-emerald-900/80 border border-amber-400/30">
+                  <div className="flex items-start gap-4 p-4 rounded-xl bg-emerald-900/80 border border-amber-400/40">
                     <div className="w-12 h-12 rounded-xl bg-amber-400 text-emerald-950 flex items-center justify-center shrink-0 shadow-lg">
                       <MapPin className="w-6 h-6" />
                     </div>
@@ -1175,7 +1174,7 @@ export default function App() {
                   </div>
                 </div>
 
-                <div className="p-4 rounded-xl bg-emerald-950/80 border border-amber-500/20 text-center">
+                <div className="p-4 rounded-xl bg-emerald-950/80 border border-amber-500/30 text-center">
                   <span className="text-xs text-amber-300 font-semibold">Hours of Operation:</span>
                   <p className="text-sm font-bold text-white mt-1">Monday – Saturday: 7:00 AM – 7:00 PM</p>
                   <p className="text-xs text-slate-400">On-Call Emergency Turnover Support Available</p>
@@ -1185,7 +1184,7 @@ export default function App() {
 
             {/* LEAD CAPTURE FORM COLUMN */}
             <div className="lg:col-span-7">
-              <div className="glass-card p-8 sm:p-10 shadow-2xl relative">
+              <div className="glass-card p-8 sm:p-10 shadow-2xl relative border-2 border-amber-400/30">
                 
                 {formSubmitted ? (
                   <div className="py-12 text-center space-y-4 animate-fadeIn">
@@ -1364,7 +1363,7 @@ export default function App() {
             {/* BRAND COL */}
             <div className="lg:col-span-2 space-y-4">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-800 to-emerald-950 flex items-center justify-center border border-amber-400">
+                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-850 to-emerald-950 flex items-center justify-center border border-amber-400">
                   <Sparkles className="w-5 h-5 text-amber-400" />
                 </div>
                 <div>
@@ -1423,8 +1422,8 @@ export default function App() {
                   </a>
                 </li>
                 <li>
-                  <a href="https://wa.me/14079524228" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-emerald-400 hover:text-white font-bold">
-                    <MessageSquare className="w-4 h-4 text-emerald-400" />
+                  <a href="https://wa.me/14079524228" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-amber-300 hover:text-white font-bold">
+                    <MessageSquare className="w-4 h-4 text-amber-400" />
                     <span>WhatsApp (407) 952-4228</span>
                   </a>
                 </li>
