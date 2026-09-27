@@ -29,7 +29,9 @@ import {
   SlidersHorizontal,
   HelpCircle,
   MessageSquare,
-  Search
+  Search,
+  Filter,
+  Image as ImageIcon
 } from 'lucide-react'
 
 export default function App() {
@@ -39,6 +41,9 @@ export default function App() {
   // Before & After Interactive Slider State
   const [sliderPosition, setSliderPosition] = useState(50)
   const [isDragging, setIsDragging] = useState(false)
+
+  // Portfolio Gallery Filter State
+  const [portfolioFilter, setPortfolioFilter] = useState('All')
 
   // Zip Code Service Area Checker State
   const [zipInput, setZipInput] = useState('')
@@ -64,6 +69,46 @@ export default function App() {
   const [calcSqFt, setCalcSqFt] = useState('1,500 - 3,000 sq ft')
   const [calcServices, setCalcServices] = useState(['Turnover & Deep Cleaning'])
   const [estimatedPrice, setEstimatedPrice] = useState('$280 - $420')
+
+  // Portfolio Projects List
+  const portfolioProjects = [
+    {
+      id: 1,
+      title: 'Luxury Estate Turnover Detailing',
+      category: 'Turnover Cleaning',
+      location: 'Winter Park, FL',
+      image: '/images/turnover.jpg',
+      description: 'Complete white-glove move-out deep clean, cabinet polishing, and marble floor restoration for a 4,200 sq ft estate.'
+    },
+    {
+      id: 2,
+      title: 'Custom Light Fixture & Fan Installation',
+      category: 'Handyman & Maintenance',
+      location: 'Dr. Phillips, FL',
+      image: '/images/handyman.jpg',
+      description: 'Modern brass ceiling fan mounting, TV wall concealment, and drywall touch-ups prior to luxury tenant lease.'
+    },
+    {
+      id: 3,
+      title: 'Post-Construction Architectural Detailing',
+      category: 'Post-Construction',
+      location: 'Lake Nona, FL',
+      image: '/images/post_construction.jpg',
+      description: 'Fine dust extraction, window trim detailing, and plaster residue removal for new architectural villa completion.'
+    },
+    {
+      id: 4,
+      title: 'HOA Clubhouse Maintenance & Turnover',
+      category: 'Commercial & HOAs',
+      location: 'Baldwin Park, FL',
+      image: '/images/commercial.jpg',
+      description: 'Full clubhouse turnover detailing, exterior pressure washing, and common area amenity maintenance.'
+    }
+  ]
+
+  const filteredProjects = portfolioFilter === 'All'
+    ? portfolioProjects
+    : portfolioProjects.filter(p => p.category === portfolioFilter)
 
   // Service Area Zip Codes in Central Florida
   const coveredZips = [
@@ -137,7 +182,7 @@ export default function App() {
           'Accept': 'application/json'
         },
         body: JSON.stringify({
-          access_key: '687b3a03-e49d-4eb1-89f6-79c230d59523', // Active Web3Forms Key
+          access_key: '687b3a03-e49d-4eb1-89f6-79c230d59523',
           name: formData.name,
           phone: formData.phone,
           email: formData.email,
@@ -303,22 +348,18 @@ export default function App() {
         </div>
       </div>
 
-      {/* NAVIGATION HEADER */}
+      {/* NAVIGATION HEADER WITH OFFICIAL LOGO */}
       <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-amber-400/20 shadow-sm transition-all">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
           
-          {/* LOGO */}
+          {/* OFFICIAL LOGO */}
           <a href="#" className="flex items-center gap-3 group">
-            <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-emerald-850 to-emerald-950 flex items-center justify-center shadow-lg border border-amber-400/50 group-hover:border-amber-400 transition-all duration-300">
-              <Sparkles className="w-6 h-6 text-amber-400 transform group-hover:rotate-12 transition-transform duration-300" />
-            </div>
-            <div className="flex flex-col">
-              <span style={{ fontFamily: 'var(--font-heading)' }} className="text-2xl font-black tracking-wider text-emerald-950 leading-none">
-                ELEVORE
-              </span>
-              <span className="text-[10px] font-extrabold tracking-[0.25em] text-amber-600 uppercase mt-0.5">
-                Corporation
-              </span>
+            <div className="h-12 px-3 py-1 rounded-xl bg-gradient-to-r from-emerald-950 via-emerald-900 to-emerald-950 border border-amber-400/40 flex items-center shadow-md group-hover:border-amber-400 transition-all duration-300 overflow-hidden">
+              <img
+                src="/images/logo.jpg"
+                alt="ELEVORE Corporation Official Logo"
+                className="h-10 w-auto object-contain rounded-md transform group-hover:scale-105 transition-transform"
+              />
             </div>
           </a>
 
@@ -329,6 +370,9 @@ export default function App() {
             </a>
             <a href="#services" className="hover:text-emerald-900 transition-colors py-1 border-b-2 border-transparent hover:border-amber-500">
               Services
+            </a>
+            <a href="#portfolio" className="hover:text-emerald-900 transition-colors py-1 border-b-2 border-transparent hover:border-amber-500">
+              Projects
             </a>
             <a href="#transformations" className="hover:text-emerald-900 transition-colors py-1 border-b-2 border-transparent hover:border-amber-500">
               Before & After
@@ -381,6 +425,9 @@ export default function App() {
               </a>
               <a href="#services" onClick={() => setMobileMenuOpen(false)} className="py-2 border-b border-slate-100 hover:text-emerald-900">
                 Services
+              </a>
+              <a href="#portfolio" onClick={() => setMobileMenuOpen(false)} className="py-2 border-b border-slate-100 hover:text-emerald-900">
+                Projects Portfolio
               </a>
               <a href="#transformations" onClick={() => setMobileMenuOpen(false)} className="py-2 border-b border-slate-100 hover:text-emerald-900">
                 Before & After
@@ -438,8 +485,8 @@ export default function App() {
             {/* HERO TEXT COLUMN */}
             <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
               
-              {/* Location Badge */}
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-900/90 border border-amber-400/50 text-amber-300 text-xs sm:text-sm font-semibold tracking-wide shadow-xl backdrop-blur-md">
+              {/* Official Brand Stamp */}
+              <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-emerald-900/90 border border-amber-400/50 text-amber-300 text-xs sm:text-sm font-semibold tracking-wide shadow-xl backdrop-blur-md">
                 <MapPin className="w-4 h-4 text-amber-400" />
                 <span>Greater Orlando • Winter Park • Central Florida</span>
               </div>
@@ -775,6 +822,102 @@ export default function App() {
               </div>
             </div>
 
+          </div>
+
+        </div>
+      </section>
+
+      {/* RECENT PROJECTS & PORTFOLIO GALLERY SECTION */}
+      <section id="portfolio" className="py-20 lg:py-28 bg-white border-y border-amber-400/20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <div className="section-badge">
+              <ImageIcon className="w-4 h-4 text-amber-600" />
+              <span>Real Work Showcase</span>
+            </div>
+            <h2 className="section-title text-emerald-950">
+              Our Recent Projects Portfolio
+            </h2>
+            <p className="section-subtitle">
+              Explore recent turnover deep cleans, handyman repairs, and post-construction detailing executed across Central Florida.
+            </p>
+          </div>
+
+          {/* PORTFOLIO FILTER TABS */}
+          <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-12">
+            {[
+              'All',
+              'Turnover Cleaning',
+              'Handyman & Maintenance',
+              'Post-Construction',
+              'Commercial & HOAs'
+            ].map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setPortfolioFilter(cat)}
+                className={`px-4 py-2 rounded-full text-xs font-bold transition-all border ${
+                  portfolioFilter === cat
+                    ? 'bg-emerald-900 text-amber-300 border-amber-400 shadow-md'
+                    : 'bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100'
+                }`}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+
+          {/* PORTFOLIO CARDS GRID */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {filteredProjects.map((project) => (
+              <div key={project.id} className="glass-card group overflow-hidden border border-amber-400/30 flex flex-col justify-between">
+                <div>
+                  <div className="relative h-48 overflow-hidden">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-emerald-950/80 via-transparent to-transparent"></div>
+                    <div className="absolute top-3 left-3 bg-emerald-950/90 text-amber-300 text-[10px] font-bold px-2.5 py-1 rounded-full border border-amber-400/40">
+                      {project.category}
+                    </div>
+                    <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white text-xs">
+                      <span className="flex items-center gap-1 text-amber-300 font-semibold">
+                        <MapPin className="w-3.5 h-3.5" />
+                        {project.location}
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="p-5 space-y-2">
+                    <h3 style={{ fontFamily: 'var(--font-heading)' }} className="text-base font-bold text-emerald-950 leading-snug">
+                      {project.title}
+                    </h3>
+                    <p className="text-xs text-slate-600 leading-relaxed">
+                      {project.description}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="p-5 pt-0">
+                  <button
+                    onClick={() => {
+                      setFormData({
+                        ...formData,
+                        serviceRequested: project.category,
+                        message: `Inquiry regarding project portfolio style: ${project.title}`
+                      })
+                      document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })
+                    }}
+                    className="w-full btn btn-outline-emerald text-[11px] py-2.5 flex items-center justify-center gap-1.5"
+                  >
+                    <span>Request Similar Project</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </button>
+                </div>
+              </div>
+            ))}
           </div>
 
         </div>
@@ -1360,20 +1503,14 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-emerald-800">
             
-            {/* BRAND COL */}
+            {/* BRAND COL WITH OFFICIAL LOGO */}
             <div className="lg:col-span-2 space-y-4">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-850 to-emerald-950 flex items-center justify-center border border-amber-400">
-                  <Sparkles className="w-5 h-5 text-amber-400" />
-                </div>
-                <div>
-                  <span style={{ fontFamily: 'var(--font-heading)' }} className="text-2xl font-black text-white tracking-wider">
-                    ELEVORE
-                  </span>
-                  <span className="block text-[10px] font-bold tracking-[0.2em] text-amber-400 uppercase">
-                    Corporation
-                  </span>
-                </div>
+                <img
+                  src="/images/logo.jpg"
+                  alt="ELEVORE Corporation Logo"
+                  className="h-12 w-auto object-contain rounded-md"
+                />
               </div>
 
               <p className="text-xs text-slate-300 max-w-sm leading-relaxed">
@@ -1392,6 +1529,7 @@ export default function App() {
               <ul className="space-y-2.5 text-xs">
                 <li><a href="#home" className="hover:text-amber-300 transition-colors">Home Overview</a></li>
                 <li><a href="#services" className="hover:text-amber-300 transition-colors">Core Services</a></li>
+                <li><a href="#portfolio" className="hover:text-amber-300 transition-colors">Projects Portfolio</a></li>
                 <li><a href="#transformations" className="hover:text-amber-300 transition-colors">Before & After</a></li>
                 <li><a href="#commercial" className="hover:text-amber-300 transition-colors">Commercial & HOAs</a></li>
                 <li><a href="#faq" className="hover:text-amber-300 transition-colors">FAQ Answers</a></li>
@@ -1463,15 +1601,18 @@ export default function App() {
             </button>
 
             <div className="space-y-6">
-              <div className="border-b border-slate-200 pb-4">
-                <div className="inline-flex items-center gap-1.5 text-xs font-bold text-amber-600 uppercase tracking-wider mb-1">
-                  <Calculator className="w-4 h-4" />
-                  <span>Interactive Estimator</span>
+              <div className="border-b border-slate-200 pb-4 flex items-center justify-between">
+                <div>
+                  <div className="inline-flex items-center gap-1.5 text-xs font-bold text-amber-600 uppercase tracking-wider mb-1">
+                    <Calculator className="w-4 h-4" />
+                    <span>Interactive Estimator</span>
+                  </div>
+                  <h3 style={{ fontFamily: 'var(--font-heading)' }} className="text-2xl font-bold text-emerald-950">
+                    Instant Property Quote Calculator
+                  </h3>
+                  <p className="text-xs text-slate-500">Configure your property specs to get an immediate estimated range.</p>
                 </div>
-                <h3 style={{ fontFamily: 'var(--font-heading)' }} className="text-2xl font-bold text-emerald-950">
-                  Instant Property Quote Calculator
-                </h3>
-                <p className="text-xs text-slate-500">Configure your property specs to get an immediate estimated range.</p>
+                <img src="/images/logo.jpg" alt="Logo" className="h-10 w-auto object-contain hidden sm:block rounded" />
               </div>
 
               {/* STEP 1: PROPERTY TYPE */}
