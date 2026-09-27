@@ -1,0 +1,312 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   ELEVORE CORPORATION - LUXURY DESIGN SYSTEM & STYLESHEET
+   Palette: Deep Emerald Green, Metallic Warm Gold, Off-White/Light Cream, Slate
+   ========================================================================== */
+
+:root {
+  /* Color Tokens */
+  --emerald-950: #041E17;
+  --emerald-900: #072B22;
+  --emerald-800: #0B3B2F;
+  --emerald-700: #0F4C3D;
+  --emerald-600: #145E4C;
+  --emerald-500: #1C7B65;
+  --emerald-100: #E6F3EE;
+  --emerald-50:  #F2F8F5;
+
+  --gold-500: #D4AF37;
+  --gold-400: #E5C158;
+  --gold-600: #B8860B;
+  --gold-700: #9A7209;
+  --gold-light: #FBF5E6;
+  --gold-gradient: linear-gradient(135deg, #D4AF37 0%, #FDF0A6 30%, #C5A059 70%, #9A7209 100%);
+  --gold-gradient-text: linear-gradient(135deg, #BF953F 0%, #FCF6BA 25%, #B38728 50%, #FBF5B7 75%, #AA771C 100%);
+  --emerald-gradient: linear-gradient(135deg, #072B22 0%, #0B3B2F 50%, #041E17 100%);
+
+  --cream-bg: #FBF9F5;
+  --cream-surface: #F5F1E9;
+  --cream-card: #FFFFFF;
+  --cream-border: #E8E2D6;
+
+  --slate-900: #0F172A;
+  --slate-800: #1E293B;
+  --slate-700: #334155;
+  --slate-600: #475569;
+  --slate-500: #64748B;
+  --slate-400: #94A3B8;
+
+  /* Typography */
+  --font-heading: 'Cinzel', 'Playfair Display', Georgia, serif;
+  --font-subheading: 'Playfair Display', serif;
+  --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+
+  /* Shadows & Elevate */
+  --shadow-sm: 0 2px 8px rgba(11, 59, 47, 0.05);
+  --shadow-md: 0 8px 24px rgba(11, 59, 47, 0.08);
+  --shadow-lg: 0 16px 40px rgba(11, 59, 47, 0.12);
+  --shadow-gold: 0 8px 30px rgba(212, 175, 55, 0.25);
+  --shadow-emerald: 0 12px 35px rgba(7, 43, 34, 0.25);
+
+  /* Radius */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-full: 9999px;
+}
+
+/* Reset & Base Setup */
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-body);
+  background-color: var(--cream-bg);
+  color: var(--slate-800);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  overflow-x: hidden;
+  background-color: var(--cream-bg);
+}
+
+/* Scrollbar Customization */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--cream-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--emerald-700);
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gold-600);
+}
+
+/* Typography Utilities */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--emerald-900);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.text-gold-gradient {
+  background: var(--gold-gradient-text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.text-emerald {
+  color: var(--emerald-700);
+}
+
+.text-gold {
+  color: var(--gold-600);
+}
+
+.subheading-serif {
+  font-family: var(--font-subheading);
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.9rem 1.8rem;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid transparent;
+}
+
+.btn-primary {
+  background: var(--gold-gradient);
+  color: var(--emerald-900);
+  box-shadow: var(--shadow-gold);
+  border-color: var(--gold-400);
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba(212, 175, 55, 0.4);
+  filter: brightness(1.05);
+}
+
+.btn-emerald {
+  background: var(--emerald-700);
+  color: #FFFFFF;
+  box-shadow: var(--shadow-emerald);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.btn-emerald:hover {
+  background: var(--emerald-800);
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(7, 43, 34, 0.35);
+  border-color: var(--gold-500);
+}
+
+.btn-outline-gold {
+  background: transparent;
+  color: var(--gold-500);
+  border: 1.5px solid var(--gold-500);
+}
+
+.btn-outline-gold:hover {
+  background: rgba(212, 175, 55, 0.1);
+  color: var(--gold-400);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.15);
+}
+
+.btn-outline-emerald {
+  background: transparent;
+  color: var(--emerald-800);
+  border: 1.5px solid var(--emerald-700);
+}
+
+.btn-outline-emerald:hover {
+  background: var(--emerald-700);
+  color: #FFFFFF;
+  transform: translateY(-3px);
+}
+
+.btn-sm {
+  padding: 0.6rem 1.2rem;
+  font-size: 0.85rem;
+}
+
+.btn-lg {
+  padding: 1.1rem 2.2rem;
+  font-size: 1.05rem;
+}
+
+/* Section Header styling */
+.section-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 1rem;
+  background: rgba(11, 59, 47, 0.08);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: var(--radius-full);
+  color: var(--emerald-800);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.section-badge.dark {
+  background: rgba(212, 175, 55, 0.15);
+  color: var(--gold-400);
+  border-color: var(--gold-500);
+}
+
+.section-title {
+  font-size: 2.5rem;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 2rem;
+  }
+}
+
+.section-subtitle {
+  font-size: 1.15rem;
+  color: var(--slate-600);
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Glassmorphism Cards */
+.glass-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--cream-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+  border-color: rgba(212, 175, 55, 0.5);
+  box-shadow: var(--shadow-lg);
+}
+
+.glass-card-dark {
+  background: rgba(7, 43, 34, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  border-radius: var(--radius-lg);
+  color: #FFFFFF;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+}
+
+/* Shimmer & Glow Effects */
+@keyframes goldPulse {
+  0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4); }
+  70% { box-shadow: 0 0 0 15px rgba(212, 175, 55, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+}
+
+.gold-glow-pulse {
+  animation: goldPulse 2.5s infinite;
+}
+
+/* Custom Modal Styles */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(7, 43, 34, 0.75);
+  backdrop-filter: blur(8px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  animation: fadeIn 0.25s ease-out;
+}
+
+.modal-content {
+  background: var(--cream-card);
+  width: 100%;
+  max-width: 700px;
+  max-height: 90vh;
+  overflow-y: auto;
+  border-radius: var(--radius-lg);
+  border: 2px solid var(--gold-500);
+  box-shadow: var(--shadow-lg);
+  padding: 2.5rem;
+  position: relative;
+  animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
